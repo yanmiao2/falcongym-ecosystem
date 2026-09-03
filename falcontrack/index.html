@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FalconTrack · Yan Miao</title>
+  <meta name="description" content="The editable twin becomes a labeling factory, and the resulting perception drives onboard, physics-aware tracking of cars, drones, and gates.">
+  <meta name="author" content="Yan Miao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FalconTrack: Ten thousand labels in twenty minutes. Zero annotation.">
+  <meta property="og:description" content="The editable twin becomes a labeling factory, and the resulting perception drives onboard, physics-aware tracking of cars, drones, and gates.">
+  <meta property="og:image" content="https://yanmiao2.github.io/falcongym-ecosystem/static/images/social_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/falcon.css">
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="falcon">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><i></i>FalconGym Ecosystem</a>
+    <div class="nav-links"><a href="../falcongym/index.html">FalconGym</a><a href="../falcongym2/index.html">FalconGym 2.0</a><a href="../falconwing/index.html">FalconWing</a><a href="../falconworld/index.html">FalconWorld</a><a href="../falconapp/index.html">FalconApp</a></div>
+    <div class="nav-cta"><a class="btn ghost sm" href="../index.html#research"><i class="fas fa-arrow-left"></i>All papers</a></div>
+  </div>
+</nav>
+
+  <header class="sub-hero">
+    <div class="wrap">
+      <div class="badges"><span class="badge accepted">IROS 2026</span><span class="badge plat">IEEE/RSJ International Conference on Intelligent Robots and Systems</span></div>
+      <div class="kicker">FalconTrack</div>
+      <h1>FalconTrack: Photorealistic Auto-Labeled Perception and Physics-Aware Vision-Based Aerial Tracking</h1>
+      <p class="authors-line"><b>Yan Miao</b>, Karteek Gandiboyina, Noah Giles, Hideki Okamoto, Bardh Hoxha, Georgios Fainekos, Sayan Mitra</p>
+      <p class="affil">University of Illinois Urbana-Champaign &middot; Toyota Motor North America R&amp;D</p>
+      <div class="cta">
+          <a class="btn" href="https://arxiv.org/abs/2606.29783" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i>arXiv</a>
+          <a class="btn" href="https://arxiv.org/pdf/2606.29783" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i>Paper</a>
+          <a class="btn ghost" href="#video"><i class="fas fa-video"></i>Video</a>
+          <a class="btn ghost" href="#bibtex"><i class="fas fa-quote-right"></i>BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-video" id="video">
+    <div class="wrap">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="../static/videos/falcontrack_reel.mp4" type="video/mp4">
+      </video>
+      <p class="tag-line">The editable twin becomes a labeling factory, and the resulting perception drives onboard, physics-aware tracking of cars, drones, and gates.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="glance" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="glance">
+        <div class="plat-card">
+          <div class="ph"><img src="../static/images/platforms/quadrotor_flight.jpg" alt="Quadrotor"></div>
+          <div class="tb"><div class="kicker">Platform</div><h4>Quadrotor</h4><p>Onboard compute; tracks F1-tenth cars, quadrotors, and gates in two environments.</p></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>10k</b><span>labeled images (RGB, mask, class, 6-DoF pose) in under 20 minutes</span></div>
+          <div class="stat"><b>25 Hz</b><span>fully onboard perception, tracking, and control</span></div>
+          <div class="stat"><b>100%</b><span>closed-loop success on five real trajectories in two environments</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="abstract">
+    <div class="wrap">
+      <h2 class="h2c">Abstract</h2>
+      <div class="prose">
+        <p>Vision-based aerial tracking is critical in GPS-denied environments. Reliable perception for tracking depends on large-scale labeled data, yet most photorealistic datasets rely on heavy manual annotation and are time-consuming to produce. We present FalconTrack, a unified perception-and-tracking framework that (i) leverages a photorealistic editable simulator for automated label generation and (ii) combines multi-head perception with physics-aware tracking for zero-shot sim-to-real transfer.</p>
+        <p>FalconTrack provides an automated labeling pipeline in a Gaussian Splatting simulator that isolates target Gaussians from short object videos and composites them with randomized backgrounds to generate RGB, mask, class, and 6-DoF pose labels, producing about 10k labeled images in under 20 minutes. Using this dataset, we train a multi-head perception module with staged learning and reprojection consistency, and connect its outputs with class-conditioned dynamics priors in an EKF for tracking.</p>
+        <p>Our perception model outperforms two baselines and reaches 96&ndash;100% class accuracy in zero-shot sim-to-real transfer on three geometrically diverse objects and two environments, while maintaining consistent performance in unseen simulated and real scenes. In real hardware closed-loop visual tracking, the onboard system runs at about 25 Hz and achieves 100% success in sim-to-real F1-tenth and gate tracking in five trajectories across two environments, while a mask-centered vision baseline drops to 60% success on F1-tenth during fast out-of-view scenarios.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2c">Method</h2>
+
+      <figure class="fig">
+        <img src="../static/images/falcontrack/auto_label.jpg" alt="Automated labeling: target Gaussians isolated from short object videos, composited with randomized backgrounds. RGB, mask, class, and 6-DoF pose labels for ~10k images in under 20 minutes." loading="lazy">
+        <p>Automated labeling: target Gaussians isolated from short object videos, composited with randomized backgrounds. RGB, mask, class, and 6-DoF pose labels for ~10k images in under 20 minutes.</p>
+      </figure>
+
+      <figure class="fig">
+        <img src="../static/images/falcontrack/closed_loop.jpg" alt="Multi-head perception feeding class-conditioned dynamics priors in an EKF for closed-loop tracking, fully onboard at ~25 Hz." loading="lazy">
+        <p>Multi-head perception feeding class-conditioned dynamics priors in an EKF for closed-loop tracking, fully onboard at ~25 Hz.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="results">
+    <div class="wrap">
+      <h2 class="h2c">Results</h2>
+      <div class="rgrid">
+
+        <figure class="rfig">
+          <img src="../static/images/falcontrack/tracking_demo.jpg" alt="Zero-shot real-world tracking of geometrically diverse targets." loading="lazy">
+          <figcaption>Zero-shot real-world tracking of geometrically diverse targets.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcontrack/perception_example.jpg" alt="Multi-head perception outputs: mask, class, and 6-DoF pose." loading="lazy">
+          <figcaption>Multi-head perception outputs: mask, class, and 6-DoF pose.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcontrack/odd.jpg" alt="Operational design domain: where the perception module is trained to operate." loading="lazy">
+          <figcaption>Operational design domain: where the perception module is trained to operate.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcontrack/hardware_setup.jpg" alt="Onboard hardware: everything runs on the vehicle at ~25 Hz." loading="lazy">
+          <figcaption>Onboard hardware: everything runs on the vehicle at ~25 Hz.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcontrack/falcongym_setup.jpg" alt="The FalconGym arena setup used for real closed-loop trials." loading="lazy">
+          <figcaption>The FalconGym arena setup used for real closed-loop trials.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bibtex">
+    <div class="wrap">
+      <div class="bib-head">
+        <h2 class="h2c" style="margin:0">BibTeX</h2>
+        <button class="btn ghost sm" id="copy-bib" type="button"><i class="fas fa-copy"></i><span>Copy</span></button>
+      </div>
+      <pre class="bib" id="bibtex-code"><code>@inproceedings{miao2026falcontrack,
+  title     = {FalconTrack: Photorealistic Auto-Labeled Perception and Physics-Aware Vision-Based Aerial Tracking},
+  author    = {Miao, Yan and Gandiboyina, Karteek and Giles, Noah and Okamoto, Hideki and Hoxha, Bardh and Fainekos, Georgios and Mitra, Sayan},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>Part of the <a href="../index.html">FalconGym Ecosystem</a> by Yan Miao.</div>
+      <div>Layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> (Nerfies), <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("copy-bib").addEventListener("click", function () {
+      const txt = document.getElementById("bibtex-code").textContent;
+      const done = () => { this.querySelector("span").textContent = "Copied"; setTimeout(() => this.querySelector("span").textContent = "Copy", 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done); else {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); document.body.removeChild(t); done();
+      }
+    });
+  </script>
+</body>
+</html>

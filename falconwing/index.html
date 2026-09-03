@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FalconWing · Yan Miao</title>
+  <meta name="description" content="An ultra-light indoor fixed-wing platform with a Gaussian-splat twin: vision-only leader-follower and zero-shot autonomous landing.">
+  <meta name="author" content="Yan Miao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FalconWing: A 150-gram airplane that lands itself on vision alone.">
+  <meta property="og:description" content="An ultra-light indoor fixed-wing platform with a Gaussian-splat twin: vision-only leader-follower and zero-shot autonomous landing.">
+  <meta property="og:image" content="https://yanmiao2.github.io/falcongym-ecosystem/static/images/social_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/falcon.css">
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="falcon">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><i></i>FalconGym Ecosystem</a>
+    <div class="nav-links"><a href="../falcongym/index.html">FalconGym</a><a href="../falcongym2/index.html">FalconGym 2.0</a><a href="../falcontrack/index.html">FalconTrack</a><a href="../falconworld/index.html">FalconWorld</a><a href="../falconapp/index.html">FalconApp</a></div>
+    <div class="nav-cta"><a class="btn ghost sm" href="../index.html#research"><i class="fas fa-arrow-left"></i>All papers</a></div>
+  </div>
+</nav>
+
+  <header class="sub-hero">
+    <div class="wrap">
+      <div class="badges"><span class="badge accepted">AIAA SciTech 2027</span><span class="badge plat">AIAA SciTech Forum</span></div>
+      <div class="kicker">FalconWing</div>
+      <h1>FalconWing: An Ultra-Light Indoor Fixed-Wing UAV Platform for Vision-Based Autonomy</h1>
+      <p class="authors-line"><b>Yan Miao</b>, Will Shen, Hang Cui, Sayan Mitra</p>
+      <p class="affil">University of Illinois Urbana-Champaign</p>
+      <div class="cta">
+          <a class="btn" href="https://arxiv.org/abs/2505.01383" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i>arXiv</a>
+          <a class="btn" href="https://arxiv.org/pdf/2505.01383" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i>Paper</a>
+          <a class="btn ghost" href="#video"><i class="fas fa-video"></i>Video</a>
+          <a class="btn ghost" href="#bibtex"><i class="fas fa-quote-right"></i>BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-video" id="video">
+    <div class="wrap">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="../static/videos/falconwing_reel.mp4" type="video/mp4">
+      </video>
+      <p class="tag-line">An ultra-light indoor fixed-wing platform with a Gaussian-splat twin: vision-only leader-follower and zero-shot autonomous landing.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="glance" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="glance">
+        <div class="plat-card">
+          <div class="ph"><img class="fit" src="../static/images/platforms/fixedwing_render.jpg" alt="Fixed-wing UMX"></div>
+          <div class="tb"><div class="kicker">Platform</div><h4>Fixed-wing UMX</h4><p>137 g airframe + 9 g analog camera, 150 g total. Offboard compute. Released as an open flight kit.</p></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>150 g</b><span>all-up weight: 137 g airframe, 9 g camera</span></div>
+          <div class="stat"><b>80%</b><span>zero-shot autonomous landing success, 8 of 10 trials</span></div>
+          <div class="stat"><b>100%</b><span>leader-follower tracking over 30 trials, three maneuver types</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="abstract">
+    <div class="wrap">
+      <h2 class="h2c">Abstract</h2>
+      <div class="prose">
+        <p>We introduce FalconWing, an ultra-light (150 g) indoor fixed-wing UAV platform for vision-based autonomy. Controlled indoor environments enable year-round repeatable UAV experiments but impose strict weight and maneuverability limits on the UAV, motivating our ultra-light FalconWing design. FalconWing couples a lightweight hardware stack (137 g airframe with a 9 g camera) and offboard computation with a software stack featuring a photorealistic 3D Gaussian Splat (GSplat) simulator for developing and evaluating vision-based controllers.</p>
+        <p>We validate FalconWing on two challenging vision-based aerial case studies. In the leader-follower case study, our best vision-based controller, trained via imitation learning on GSplat-rendered data augmented with domain randomization, achieves 100% tracking success across 3 types of leader maneuvers over 30 trials and shows robustness to the leader's appearance shifts in simulation. In the autonomous landing case study, our vision-based controller trained purely in simulation transfers zero-shot to real hardware, achieving an 80% success rate over ten landing trials.</p>
+        <p>We will release hardware designs, GSplat scenes, and dynamics models to make FalconWing an open-source flight kit for engineering students and research labs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2c">Method</h2>
+
+      <figure class="fig">
+        <img src="../static/images/falconwing/system.jpg" alt="The FalconWing stack: 137 g airframe + 9 g camera, offboard compute, and a GSplat simulator for controller development." loading="lazy">
+        <p>The FalconWing stack: 137 g airframe + 9 g camera, offboard compute, and a GSplat simulator for controller development.</p>
+      </figure>
+
+      <figure class="fig">
+        <img src="../static/images/falconwing/digital_gs.jpg" alt="The photorealistic Gaussian-splat digital twin of the indoor flight space." loading="lazy">
+        <p>The photorealistic Gaussian-splat digital twin of the indoor flight space.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="results">
+    <div class="wrap">
+      <h2 class="h2c">Results</h2>
+      <div class="rgrid">
+
+        <figure class="rfig">
+          <img src="../static/images/falconwing/intro.jpg" alt="FalconWing: an ultra-light (150 g) indoor fixed-wing platform." loading="lazy">
+          <figcaption>FalconWing: an ultra-light (150 g) indoor fixed-wing platform.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconwing/domain_randomization.jpg" alt="Domain randomization on GSplat renders for robust vision-based control." loading="lazy">
+          <figcaption>Domain randomization on GSplat renders for robust vision-based control.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconwing/leader_chaser_traj.jpg" alt="Leader-follower case study: 100% tracking success over 30 trials." loading="lazy">
+          <figcaption>Leader-follower case study: 100% tracking success over 30 trials.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconwing/landing_traj.jpg" alt="Autonomous landing: zero-shot sim-to-real, 8/10 success." loading="lazy">
+          <figcaption>Autonomous landing: zero-shot sim-to-real, 8/10 success.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bibtex">
+    <div class="wrap">
+      <div class="bib-head">
+        <h2 class="h2c" style="margin:0">BibTeX</h2>
+        <button class="btn ghost sm" id="copy-bib" type="button"><i class="fas fa-copy"></i><span>Copy</span></button>
+      </div>
+      <pre class="bib" id="bibtex-code"><code>@inproceedings{miao2027falconwing,
+  title     = {FalconWing: An Ultra-Light Indoor Fixed-Wing UAV Platform for Vision-Based Autonomy},
+  author    = {Miao, Yan and Shen, Will and Cui, Hang and Mitra, Sayan},
+  booktitle = {AIAA SciTech Forum},
+  year      = {2027}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>Part of the <a href="../index.html">FalconGym Ecosystem</a> by Yan Miao.</div>
+      <div>Layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> (Nerfies), <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("copy-bib").addEventListener("click", function () {
+      const txt = document.getElementById("bibtex-code").textContent;
+      const done = () => { this.querySelector("span").textContent = "Copied"; setTimeout(() => this.querySelector("span").textContent = "Copy", 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done); else {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); document.body.removeChild(t); done();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FalconWorld · Yan Miao</title>
+  <meta name="description" content="A real quadrotor flies through Gaussian-splat obstacles composited into its own camera stream, so failure boundaries can be probed without hitting anything.">
+  <meta name="author" content="Yan Miao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FalconWorld: Real quadrotor, virtual obstacles, no crashes.">
+  <meta property="og:description" content="A real quadrotor flies through Gaussian-splat obstacles composited into its own camera stream, so failure boundaries can be probed without hitting anything.">
+  <meta property="og:image" content="https://yanmiao2.github.io/falcongym-ecosystem/static/images/social_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/falcon.css">
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="falcon">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><i></i>FalconGym Ecosystem</a>
+    <div class="nav-links"><a href="../falcongym/index.html">FalconGym</a><a href="../falcongym2/index.html">FalconGym 2.0</a><a href="../falcontrack/index.html">FalconTrack</a><a href="../falconwing/index.html">FalconWing</a><a href="../falconapp/index.html">FalconApp</a></div>
+    <div class="nav-cta"><a class="btn ghost sm" href="../index.html#research"><i class="fas fa-arrow-left"></i>All papers</a></div>
+  </div>
+</nav>
+
+  <header class="sub-hero">
+    <div class="wrap">
+      <div class="badges"><span class="badge review">Under review</span></div>
+      <div class="kicker">FalconWorld</div>
+      <h1>FalconWorld: Low-Latency Mixed Reality for Safe Visual Aerial Autonomy Evaluation</h1>
+      <p class="authors-line"><b>Yan Miao</b> et al. <span class="muted">(full author list upon publication, double-blind review)</span></p>
+      <p class="affil">University of Illinois Urbana-Champaign</p>
+      <div class="cta">
+          <a class="btn ghost" href="#video"><i class="fas fa-video"></i>Video</a>
+          <a class="btn ghost" href="#bibtex"><i class="fas fa-quote-right"></i>BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-video" id="video">
+    <div class="wrap">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="../static/videos/falconworld_reel.mp4" type="video/mp4">
+      </video>
+      <p class="tag-line">A real quadrotor flies through Gaussian-splat obstacles composited into its own camera stream, so failure boundaries can be probed without hitting anything.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="glance" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="glance">
+        <div class="plat-card">
+          <div class="ph"><img src="../static/images/platforms/quadrotor_flight.jpg" alt="Quadrotor"></div>
+          <div class="tb"><div class="kicker">Platform</div><h4>Quadrotor</h4><p>Jetson Orin NX onboard, ArduCam RGB; virtual gates rendered with 3D Gaussian splatting.</p></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>28 ms</b><span>mixed-reality closed-loop latency (21 ms hardware-in-the-loop)</span></div>
+          <div class="stat"><b>95.2%</b><span>safe-set precision in mixed reality, up from 62.5% in pure simulation</span></div>
+          <div class="stat"><b>10/10</b><span>successful trials across four visual autonomy tasks</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="abstract">
+    <div class="wrap">
+      <h2 class="h2c">Abstract</h2>
+      <div class="prose">
+        <p>Safely evaluating vision-based aerial policies is challenging because simulation can hide real quadrotor dynamics, while real-world failures can cause collisions and costly repairs. We present FalconWorld, a safe, realistic, and low-latency hardware-in-the-loop mixed-reality (MR) framework for testing quadrotor visual autonomy and bridging this gap. FalconWorld closes the visual-policy loop through a real quadrotor operating in the physical world, while MR renders safety-critical obstacles with 3D Gaussian Splatting and composites them into the onboard RGB stream in real time.</p>
+        <p>We evaluate FalconWorld on four visual aerial autonomy tasks: F1-tenth tracking, quadrotor tracking, moving-gate tracking, and static-gate crossing. Across these tasks, FalconWorld achieves 21 ms HiL and 28 ms MR closed-loop latency, with 10/10 success in trials with different initial conditions and task objectives.</p>
+        <p>In safe failure-boundary testing, MR improves safe-set precision from 62.5% in pure simulation to 95.2%, showing that virtual obstacles with real dynamics can identify unsafe initial conditions before physical gate trials. Lastly, we demonstrate that the same low-latency MR setup can support safe manual pilot flight training with a real quadrotor and virtual gates.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2c">Method</h2>
+
+      <figure class="fig">
+        <img src="../static/images/falconworld/system_overview.jpg" alt="FalconWorld architecture: a real quadrotor's onboard RGB stream composited with 3DGS-rendered virtual obstacles at 28 ms closed-loop latency." loading="lazy">
+        <p>FalconWorld architecture: a real quadrotor's onboard RGB stream composited with 3DGS-rendered virtual obstacles at 28 ms closed-loop latency.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="results">
+    <div class="wrap">
+      <h2 class="h2c">Results</h2>
+      <div class="rgrid">
+
+        <figure class="rfig">
+          <img src="../static/images/falconworld/hil_mr_demo.jpg" alt="Hardware-in-the-loop and mixed reality: real vehicle, virtual gates, real dynamics." loading="lazy">
+          <figcaption>Hardware-in-the-loop and mixed reality: real vehicle, virtual gates, real dynamics.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconworld/mr_view.jpg" alt="The onboard mixed-reality view the policy (or pilot) actually sees." loading="lazy">
+          <figcaption>The onboard mixed-reality view the policy (or pilot) actually sees.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconworld/quadrotor.jpg" alt="The quadrotor platform." loading="lazy">
+          <figcaption>The quadrotor platform.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconworld/safe_testing.jpg" alt="Safe failure-boundary testing: probing unsafe initial conditions without crashing into anything real." loading="lazy">
+          <figcaption>Safe failure-boundary testing: probing unsafe initial conditions without crashing into anything real.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falconworld/manual_flight.jpg" alt="The same MR setup supports safe manual pilot flight with virtual gates." loading="lazy">
+          <figcaption>The same MR setup supports safe manual pilot flight with virtual gates.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bibtex">
+    <div class="wrap">
+      <div class="bib-head">
+        <h2 class="h2c" style="margin:0">BibTeX</h2>
+        <button class="btn ghost sm" id="copy-bib" type="button"><i class="fas fa-copy"></i><span>Copy</span></button>
+      </div>
+      <pre class="bib" id="bibtex-code"><code>% Citation will be available upon publication. For now, please reference:
+%   FalconWorld: Low-Latency Mixed Reality for Safe Visual Aerial
+%   Autonomy Evaluation. Under review, 2026.</code></pre>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>Part of the <a href="../index.html">FalconGym Ecosystem</a> by Yan Miao.</div>
+      <div>Layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> (Nerfies), <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("copy-bib").addEventListener("click", function () {
+      const txt = document.getElementById("bibtex-code").textContent;
+      const done = () => { this.querySelector("span").textContent = "Copied"; setTimeout(() => this.querySelector("span").textContent = "Copy", 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done); else {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); document.body.removeChild(t); done();
+      }
+    });
+  </script>
+</body>
+</html>

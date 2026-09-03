@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FalconGym 2.0 · Yan Miao</title>
+  <meta name="description" content="An Edit API rewrites the Gaussian-splat scene in milliseconds, and a refinement loop spends every render where the policy is weakest.">
+  <meta name="author" content="Yan Miao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FalconGym 2.0: Edit the world in milliseconds. Train where the policy fails.">
+  <meta property="og:description" content="An Edit API rewrites the Gaussian-splat scene in milliseconds, and a refinement loop spends every render where the policy is weakest.">
+  <meta property="og:image" content="https://yanmiao2.github.io/falcongym-ecosystem/static/images/social_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/falcon.css">
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="falcon">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><i></i>FalconGym Ecosystem</a>
+    <div class="nav-links"><a href="../falcongym/index.html">FalconGym</a><a href="../falcontrack/index.html">FalconTrack</a><a href="../falconwing/index.html">FalconWing</a><a href="../falconworld/index.html">FalconWorld</a><a href="../falconapp/index.html">FalconApp</a></div>
+    <div class="nav-cta"><a class="btn ghost sm" href="../index.html#research"><i class="fas fa-arrow-left"></i>All papers</a></div>
+  </div>
+</nav>
+
+  <header class="sub-hero">
+    <div class="wrap">
+      <div class="badges"><span class="badge accepted">ICRA 2026</span><span class="badge plat">IEEE International Conference on Robotics and Automation</span></div>
+      <div class="kicker">FalconGym 2.0</div>
+      <h1>Performance-Guided Refinement for Visual Aerial Navigation using Editable Gaussian Splatting in FalconGym 2.0</h1>
+      <p class="authors-line"><b>Yan Miao</b>, Ege Yuceel, Georgios Fainekos, Bardh Hoxha, Hideki Okamoto, Sayan Mitra</p>
+      <p class="affil">University of Illinois Urbana-Champaign &middot; Toyota Motor North America R&amp;D</p>
+      <div class="cta">
+          <a class="btn" href="https://arxiv.org/abs/2510.02248" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i>arXiv</a>
+          <a class="btn" href="https://arxiv.org/pdf/2510.02248" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i>Paper</a>
+          <a class="btn ghost" href="#video"><i class="fas fa-video"></i>Video</a>
+          <a class="btn ghost" href="#bibtex"><i class="fas fa-quote-right"></i>BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-video" id="video">
+    <div class="wrap">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="../static/videos/falcongym2_reel.mp4" type="video/mp4">
+      </video>
+      <p class="tag-line">An Edit API rewrites the Gaussian-splat scene in milliseconds, and a refinement loop spends every render where the policy is weakest.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="glance" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="glance">
+        <div class="plat-card">
+          <div class="ph"><img class="fit" src="../static/images/platforms/quadrotor_green.jpg" alt="Quadrotor"></div>
+          <div class="tb"><div class="kicker">Platform</div><h4>Quadrotor</h4><p>Hardware trials on a quadrotor; fixed-wing and quadrotor case studies in the editable twin.</p></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>98.6%</b><span>success on real hardware, 69 of 70 gates over 30 trials</span></div>
+          <div class="stat"><b>100%</b><span>on three unseen simulated tracks from one policy, no retraining</span></div>
+          <div class="stat"><b>ms</b><span>to add, move, scale, or delete scene objects via the Edit API</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="abstract">
+    <div class="wrap">
+      <h2 class="h2c">Abstract</h2>
+      <div class="prose">
+        <p>Visual policy design is crucial for aerial navigation. However, state-of-the-art visual policies often overfit to a single track and their performance degrades when track geometry changes. We develop FalconGym 2.0, a photorealistic simulation framework built on Gaussian Splatting (GSplat) with an Edit API that programmatically generates diverse static and dynamic tracks in milliseconds.</p>
+        <p>Leveraging FalconGym 2.0's editability, we propose a Performance-Guided Refinement (PGR) algorithm, which concentrates visual-policy training on challenging tracks while iteratively improving performance. Across two case studies (fixed-wing UAVs and quadrotors) with distinct dynamics and environments, we show that a single visual policy trained with PGR in FalconGym 2.0 outperforms state-of-the-art baselines in generalization and robustness: it generalizes to three unseen tracks with 100% success without per-track retraining and maintains higher success rates under gate-pose perturbations.</p>
+        <p>Finally, we demonstrate zero-shot sim-to-real transfer of the PGR-trained visual policy to quadrotor hardware, achieving a 98.6% success rate (69/70 gates) over 30 trials across two three-gate tracks and one moving-gate track.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2c">Method</h2>
+
+      <figure class="fig">
+        <img src="../static/images/falcongym2/editable_gsplat.jpg" alt="The Edit API: programmatic add / delete / translate / rotate / scale / duplicate of scene Gaussians, generating new tracks in milliseconds." loading="lazy">
+        <p>The Edit API: programmatic add / delete / translate / rotate / scale / duplicate of scene Gaussians, generating new tracks in milliseconds.</p>
+      </figure>
+
+      <figure class="fig">
+        <img src="../static/images/falcongym2/closed_loop.jpg" alt="FalconGym 2.0 closed-loop training and evaluation pipeline with Performance-Guided Refinement." loading="lazy">
+        <p>FalconGym 2.0 closed-loop training and evaluation pipeline with Performance-Guided Refinement.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="results">
+    <div class="wrap">
+      <h2 class="h2c">Results</h2>
+      <div class="rgrid">
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym2/hw_trajectory.jpg" alt="Real-hardware trajectories: 98.6% success (69/70 gates) over 30 trials, including a moving gate." loading="lazy">
+          <figcaption>Real-hardware trajectories: 98.6% success (69/70 gates) over 30 trials, including a moving gate.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym2/quadrotor_trajectory.jpg" alt="Quadrotor case study: generalization to unseen tracks without per-track retraining." loading="lazy">
+          <figcaption>Quadrotor case study: generalization to unseen tracks without per-track retraining.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym2/uav_trajectory.jpg" alt="Fixed-wing case study: the same PGR recipe on distinct dynamics." loading="lazy">
+          <figcaption>Fixed-wing case study: the same PGR recipe on distinct dynamics.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym2/quadrotor_sr.png" alt="Quadrotor success rates: PGR vs. baselines under track variation." loading="lazy">
+          <figcaption>Quadrotor success rates: PGR vs. baselines under track variation.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym2/uav_sr.png" alt="Fixed-wing success rates under gate-pose perturbations." loading="lazy">
+          <figcaption>Fixed-wing success rates under gate-pose perturbations.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bibtex">
+    <div class="wrap">
+      <div class="bib-head">
+        <h2 class="h2c" style="margin:0">BibTeX</h2>
+        <button class="btn ghost sm" id="copy-bib" type="button"><i class="fas fa-copy"></i><span>Copy</span></button>
+      </div>
+      <pre class="bib" id="bibtex-code"><code>@inproceedings{MiaoEtAl:ICRA26,
+  title     = {Performance-Guided Refinement for Visual Aerial Navigation using Editable Gaussian Splatting in FalconGym 2.0},
+  author    = {Miao, Yan and Yuceel, Ege and Fainekos, Georgios and Hoxha, Bardh and Okamoto, Hideki and Mitra, Sayan},
+  booktitle = {Proceedings of IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>Part of the <a href="../index.html">FalconGym Ecosystem</a> by Yan Miao.</div>
+      <div>Layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> (Nerfies), <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("copy-bib").addEventListener("click", function () {
+      const txt = document.getElementById("bibtex-code").textContent;
+      const done = () => { this.querySelector("span").textContent = "Copied"; setTimeout(() => this.querySelector("span").textContent = "Copy", 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done); else {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); document.body.removeChild(t); done();
+      }
+    });
+  </script>
+</body>
+</html>

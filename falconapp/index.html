@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FalconApp · Yan Miao</title>
+  <meta name="description" content="An iPhone client and a GPU backend wrap the FalconGym 2.0 and FalconTrack tools into one capture-to-inference workflow for new rigid objects.">
+  <meta name="author" content="Yan Miao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FalconApp: From a two-minute phone video to a trained perception model, on the phone.">
+  <meta property="og:description" content="An iPhone client and a GPU backend wrap the FalconGym 2.0 and FalconTrack tools into one capture-to-inference workflow for new rigid objects.">
+  <meta property="og:image" content="https://yanmiao2.github.io/falcongym-ecosystem/static/images/social_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/falcon.css">
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="falcon">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><i></i>FalconGym Ecosystem</a>
+    <div class="nav-links"><a href="../falcongym/index.html">FalconGym</a><a href="../falcongym2/index.html">FalconGym 2.0</a><a href="../falcontrack/index.html">FalconTrack</a><a href="../falconwing/index.html">FalconWing</a><a href="../falconworld/index.html">FalconWorld</a></div>
+    <div class="nav-cta"><a class="btn ghost sm" href="../index.html#research"><i class="fas fa-arrow-left"></i>All papers</a></div>
+  </div>
+</nav>
+
+  <header class="sub-hero">
+    <div class="wrap">
+      <div class="badges"><span class="badge workshop">IROS 2026 Workshop</span></div>
+      <div class="kicker">FalconApp</div>
+      <h1>FalconApp: A Mobile Client-Server Pipeline for Auto-Labeled Object Perception</h1>
+      <p class="authors-line"><b>Yan Miao</b> et al.</p>
+      <p class="affil">University of Illinois Urbana-Champaign</p>
+      <div class="cta">
+          <a class="btn" href="../static/pdfs/falconapp_preprint.pdf" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i>Paper</a>
+          <a class="btn ghost" href="#bibtex"><i class="fas fa-quote-right"></i>BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-video" id="video">
+    <div class="wrap">
+      <figure class="fig" style="margin-bottom:0">
+        <img src="../static/images/falconapp/overview.jpg" alt="FalconApp pipeline: record on the phone, auto-label in FalconGym 2.0, train, then stream live inference back to the phone.">
+        <p>FalconApp pipeline: record on the phone, auto-label in FalconGym 2.0, train, then stream live inference back to the phone.</p>
+      </figure>
+      <p class="tag-line">An iPhone client and a GPU backend wrap the FalconGym 2.0 and FalconTrack tools into one capture-to-inference workflow for new rigid objects.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="glance" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="glance">
+        <div class="plat-card">
+          <div class="ph"><img class="fit" src="../static/images/platforms/iphone.jpg" alt="iPhone + GPU backend"></div>
+          <div class="tb"><div class="kicker">Platform</div><h4>iPhone + GPU backend</h4><p>Swift client streams video and images over TCP; the backend reconstructs, auto-labels, trains, and serves predictions.</p></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>12 to 23 min</b><span>post-capture data generation and training per object</span></div>
+          <div class="stat"><b>29 to 32 ms</b><span>measured client-server inference round trip</span></div>
+          <div class="stat"><b>5</b><span>rigid objects spanning diverse geometry, scale, and symmetry</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="abstract">
+    <div class="wrap">
+      <h2 class="h2c">Abstract</h2>
+      <div class="prose">
+        <p>Onboarding a new rigid object into a learned perception system requires both labeled training data and the infrastructure that connects capture, training, and inference. We present FalconApp, a mobile client-server pipeline for this workflow. From a two-minute handheld phone capture, a GPU backend reconstructs an editable 3D Gaussian Splatting (GSplat) asset, composites it with diverse backgrounds, generates images with render-aligned masks and 6-DoF poses, and trains an object-specific perception module without per-image manual mask or pose labels. During live use, the phone streams images to the backend for offboard inference and displays the returned predictions.</p>
+        <p>FalconApp reuses the rendering, auto-labeling, and perception components of FalconGym 2.0 and FalconTrack; the contribution of this work is the Swift mobile client, frontend-backend protocol, workflow orchestration, and system-level characterization of the integrated pipeline. Across five rigid object instances spanning diverse geometry, scale, and symmetry, post-reconstruction data generation and training take 12&ndash;23 minutes per object, and the measured client-server inference round trip is 29&ndash;32 ms.</p>
+        <p>FalconApp has lower translation and angular errors than a geometric PnP baseline on four of five objects in simulation and the real world, and lower errors than a per-object-and-background-trained neural pose regressor on all three shared objects. For the rotationally symmetric lamp, simulated results are mixed and both real-world errors are worse than PnP, exposing a limitation of the current pose pipeline.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2c">Method</h2>
+
+      <figure class="fig">
+        <img src="../static/images/falconapp/labeling_objects.jpg" alt="Auto-labeling in FalconGym 2.0: object Gaussians isolated from the phone capture and composited with randomized backgrounds and poses." loading="lazy">
+        <p>Auto-labeling in FalconGym 2.0: object Gaussians isolated from the phone capture and composited with randomized backgrounds and poses.</p>
+      </figure>
+
+      <figure class="fig">
+        <img src="../static/images/falconapp/pose_estimator.jpg" alt="The multi-head perception module (mask, class, 6-DoF pose) trained on the auto-labeled set." loading="lazy">
+        <p>The multi-head perception module (mask, class, 6-DoF pose) trained on the auto-labeled set.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="results">
+    <div class="wrap">
+      <h2 class="h2c">Results</h2>
+      <div class="rgrid">
+
+        <figure class="rfig">
+          <img src="../static/images/falconapp/app_interface.jpg" alt="The iOS client: connect, record a two-minute capture, then view live mask and pose predictions streamed from the backend." loading="lazy">
+          <figcaption>The iOS client: connect, record a two-minute capture, then view live mask and pose predictions streamed from the backend.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bibtex">
+    <div class="wrap">
+      <div class="bib-head">
+        <h2 class="h2c" style="margin:0">BibTeX</h2>
+        <button class="btn ghost sm" id="copy-bib" type="button"><i class="fas fa-copy"></i><span>Copy</span></button>
+      </div>
+      <pre class="bib" id="bibtex-code"><code>% Citation will be available once the workshop version is public. For now, please reference:
+%   FalconApp: A Mobile Client-Server Pipeline for Auto-Labeled Object Perception.
+%   IROS 2026 Workshop.</code></pre>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>Part of the <a href="../index.html">FalconGym Ecosystem</a> by Yan Miao.</div>
+      <div>Layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> (Nerfies), <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("copy-bib").addEventListener("click", function () {
+      const txt = document.getElementById("bibtex-code").textContent;
+      const done = () => { this.querySelector("span").textContent = "Copied"; setTimeout(() => this.querySelector("span").textContent = "Copy", 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done); else {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); document.body.removeChild(t); done();
+      }
+    });
+  </script>
+</body>
+</html>

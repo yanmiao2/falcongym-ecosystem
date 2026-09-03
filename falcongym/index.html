@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FalconGym · Yan Miao</title>
+  <meta name="description" content="A visual policy trained only in a NeRF twin flies a real quadrotor through 120 gates with no fine-tuning.">
+  <meta name="author" content="Yan Miao">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FalconGym: Train in NeRF. Fly through real gates.">
+  <meta property="og:description" content="A visual policy trained only in a NeRF twin flies a real quadrotor through 120 gates with no fine-tuning.">
+  <meta property="og:image" content="https://yanmiao2.github.io/falcongym-ecosystem/static/images/social_preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="../static/images/icon-192.png">
+  <link rel="apple-touch-icon" href="../static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="../static/css/falcon.css">
+  <script defer src="../static/js/fontawesome.all.min.js"></script>
+</head>
+<body class="falcon">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><i></i>FalconGym Ecosystem</a>
+    <div class="nav-links"><a href="../falcongym2/index.html">FalconGym 2.0</a><a href="../falcontrack/index.html">FalconTrack</a><a href="../falconwing/index.html">FalconWing</a><a href="../falconworld/index.html">FalconWorld</a><a href="../falconapp/index.html">FalconApp</a></div>
+    <div class="nav-cta"><a class="btn ghost sm" href="../index.html#research"><i class="fas fa-arrow-left"></i>All papers</a></div>
+  </div>
+</nav>
+
+  <header class="sub-hero">
+    <div class="wrap">
+      <div class="badges"><span class="badge accepted">IROS 2025</span><span class="badge plat">IEEE/RSJ International Conference on Intelligent Robots and Systems, Hangzhou</span></div>
+      <div class="kicker">FalconGym</div>
+      <h1>FalconGym: A Photorealistic Simulation Framework for Zero-Shot Sim-to-Real Vision-Based Quadrotor Navigation</h1>
+      <p class="authors-line"><b>Yan Miao</b>, Will Shen, Sayan Mitra</p>
+      <p class="affil">University of Illinois Urbana-Champaign</p>
+      <div class="cta">
+          <a class="btn" href="https://arxiv.org/abs/2503.02198" target="_blank" rel="noopener"><i class="ai ai-arxiv"></i>arXiv</a>
+          <a class="btn" href="https://arxiv.org/pdf/2503.02198" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i>Paper</a>
+          <a class="btn ghost" href="#video"><i class="fas fa-video"></i>Video</a>
+          <a class="btn ghost" href="#bibtex"><i class="fas fa-quote-right"></i>BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="sub-video" id="video">
+    <div class="wrap">
+      <video controls autoplay muted loop playsinline preload="metadata">
+        <source src="../static/videos/falcongym_reel.mp4" type="video/mp4">
+      </video>
+      <p class="tag-line">A visual policy trained only in a NeRF twin flies a real quadrotor through 120 gates with no fine-tuning.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="glance" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="glance">
+        <div class="plat-card">
+          <div class="ph"><img src="../static/images/platforms/quadrotor_v1.jpg" alt="Quadrotor"></div>
+          <div class="tb"><div class="kicker">Platform</div><h4>Quadrotor</h4><p>ArduCam RGB camera, Navio2 IMU, Raspberry Pi 3. 38 cm-radius racing gates.</p></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>95.8%</b><span>success over 120 real gates in 30 hardware flights</span></div>
+          <div class="stat"><b>10 cm</b><span>mean gate-crossing error on 38 cm-radius gates</span></div>
+          <div class="stat"><b>3</b><span>tracks: circle, U-turn, figure-8, one policy each</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec alt" id="abstract">
+    <div class="wrap">
+      <h2 class="h2c">Abstract</h2>
+      <div class="prose">
+        <p>We present a novel framework demonstrating zero-shot sim-to-real transfer of visual control policies learned in a Neural Radiance Field (NeRF) environment for quadrotors to fly through racing gates. Robust transfer from simulation to real flight poses a major challenge, as standard simulators often lack sufficient visual fidelity. To address this, we construct a photorealistic simulation environment of quadrotor racing tracks, called FalconGym, which provides effectively unlimited synthetic images for training.</p>
+        <p>Within FalconGym, we develop a pipelined approach for crossing gates that combines (i) a Neural Pose Estimator (NPE) coupled with a Kalman filter to reliably infer quadrotor poses from single-frame RGB images and IMU data, and (ii) a self-attention-based multi-modal controller that adaptively integrates visual features and pose estimation. This multi-modal design compensates for perception noise and intermittent gate visibility. We train this controller purely in FalconGym with imitation learning and deploy the resulting policy to real hardware with no additional fine-tuning.</p>
+        <p>Simulation experiments on three distinct tracks (circle, U-turn and figure-8) demonstrate that our controller outperforms a vision-only state-of-the-art baseline in both success rate and gate-crossing accuracy. In 30 live hardware flights spanning three tracks and 120 gates, our controller achieves a 95.8% success rate and an average error of just 10 cm when flying through 38 cm-radius gates.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="method">
+    <div class="wrap">
+      <h2 class="h2c">Method</h2>
+
+      <figure class="fig">
+        <img src="../static/images/falcongym/closed_loop.png" alt="Closed-loop architecture: NeRF-rendered observations drive the perception and control stack that transfers zero-shot to hardware." loading="lazy">
+        <p>Closed-loop architecture: NeRF-rendered observations drive the perception and control stack that transfers zero-shot to hardware.</p>
+      </figure>
+
+      <figure class="fig">
+        <img src="../static/images/falcongym/perception.png" alt="Neural Pose Estimator + Kalman filter infers quadrotor pose from single-frame RGB and IMU." loading="lazy">
+        <p>Neural Pose Estimator + Kalman filter infers quadrotor pose from single-frame RGB and IMU.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec alt" id="results">
+    <div class="wrap">
+      <h2 class="h2c">Results</h2>
+      <div class="rgrid">
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym/real_vs_sim.jpg" alt="Real camera frame vs. FalconGym NeRF render of the same arena: the photorealism that makes zero-shot transfer work." loading="lazy">
+          <figcaption>Real camera frame vs. FalconGym NeRF render of the same arena: the photorealism that makes zero-shot transfer work.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym/drone_gates.jpg" alt="The real flight arena: quadrotor and racing gates used in 30 live hardware flights." loading="lazy">
+          <figcaption>The real flight arena: quadrotor and racing gates used in 30 live hardware flights.</figcaption>
+        </figure>
+
+        <figure class="rfig">
+          <img src="../static/images/falcongym/trajectory_plot.jpg" alt="Flight trajectories across circle, U-turn, and figure-8 tracks." loading="lazy">
+          <figcaption>Flight trajectories across circle, U-turn, and figure-8 tracks.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="bibtex">
+    <div class="wrap">
+      <div class="bib-head">
+        <h2 class="h2c" style="margin:0">BibTeX</h2>
+        <button class="btn ghost sm" id="copy-bib" type="button"><i class="fas fa-copy"></i><span>Copy</span></button>
+      </div>
+      <pre class="bib" id="bibtex-code"><code>@inproceedings{miao2025falcongym,
+  author    = {Yan Miao and Will Shen and Sayan Mitra},
+  title     = {FalconGym: A Photorealistic Simulation Framework for Zero-Shot Sim-to-Real Vision-Based Quadrotor Navigation},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2025},
+  address   = {Hangzhou, China},
+  month     = {October},
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div>Part of the <a href="../index.html">FalconGym Ecosystem</a> by Yan Miao.</div>
+      <div>Layout adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> (Nerfies), <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("copy-bib").addEventListener("click", function () {
+      const txt = document.getElementById("bibtex-code").textContent;
+      const done = () => { this.querySelector("span").textContent = "Copied"; setTimeout(() => this.querySelector("span").textContent = "Copy", 1800); };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done); else {
+        const t = document.createElement("textarea"); t.value = txt; document.body.appendChild(t); t.select();
+        document.execCommand("copy"); document.body.removeChild(t); done();
+      }
+    });
+  </script>
+</body>
+</html>
